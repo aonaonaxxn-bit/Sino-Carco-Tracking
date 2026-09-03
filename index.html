@@ -17,10 +17,25 @@
 
     body {
       margin: 0;
-      font-family: Arial, "Noto Sans Thai", sans-serif;
+      font-family:
+        Arial,
+        "Noto Sans Thai",
+        "Tahoma",
+        sans-serif;
       min-height: 100vh;
-      background: #eef3f8;
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(28, 122, 177, 0.07),
+          transparent 30%
+        ),
+        #eef3f8;
       color: #172b3f;
+    }
+
+    button,
+    input {
+      font-family: inherit;
     }
 
     .page {
@@ -29,97 +44,113 @@
       flex-direction: column;
     }
 
-    /* =========================
+    /* =========================================
        HEADER
-    ========================= */
+    ========================================= */
 
     .header {
       position: relative;
       overflow: hidden;
       background:
-        linear-gradient(135deg, #06182d 0%, #0a2d4d 52%, #0c5b8f 100%);
+        linear-gradient(
+          135deg,
+          #041526 0%,
+          #082944 48%,
+          #0b527e 100%
+        );
       color: white;
-      padding: 34px 20px 105px;
+      padding: 38px 20px 125px;
       text-align: center;
-      box-shadow: 0 8px 30px rgba(7, 29, 53, 0.22);
+      box-shadow:
+        0 15px 45px rgba(5, 30, 52, 0.25);
     }
 
     .header::before {
       content: "";
       position: absolute;
-      width: 420px;
-      height: 420px;
-      border: 1px solid rgba(255,255,255,0.08);
+      width: 520px;
+      height: 520px;
+      border: 1px solid rgba(255,255,255,.08);
       border-radius: 50%;
-      right: -150px;
-      top: -230px;
+      right: -190px;
+      top: -300px;
       box-shadow:
-        0 0 0 45px rgba(255,255,255,0.018),
-        0 0 0 90px rgba(255,255,255,0.012);
+        0 0 0 50px rgba(255,255,255,.018),
+        0 0 0 100px rgba(255,255,255,.012);
     }
 
     .header::after {
       content: "";
       position: absolute;
-      width: 300px;
-      height: 300px;
-      border: 1px solid rgba(255,255,255,0.07);
+      width: 360px;
+      height: 360px;
+      border: 1px solid rgba(255,255,255,.07);
       border-radius: 50%;
-      left: -145px;
-      bottom: -205px;
+      left: -190px;
+      bottom: -260px;
       box-shadow:
-        0 0 0 35px rgba(255,255,255,0.018),
-        0 0 0 70px rgba(255,255,255,0.012);
+        0 0 0 40px rgba(255,255,255,.018),
+        0 0 0 80px rgba(255,255,255,.012);
     }
 
     .brand {
       position: relative;
       z-index: 2;
+      max-width: 900px;
+      margin: auto;
     }
-
-    /* Logistics decorative mark */
 
     .logistics-mark {
       display: flex;
       justify-content: center;
-      gap: 6px;
-      margin: 0 auto 18px;
-      opacity: .85;
+      align-items: center;
+      gap: 7px;
+      margin: 0 auto 19px;
+      opacity: .9;
     }
 
     .logistics-mark span {
-      width: 22px;
-      height: 13px;
+      width: 30px;
+      height: 14px;
       display: block;
-      border: 1px solid rgba(255,255,255,.38);
-      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.32);
+      background: rgba(255,255,255,.07);
       transform: skewX(-18deg);
+    }
+
+    .logistics-mark span:nth-child(2) {
+      width: 48px;
+      background: rgba(64, 188, 238, .16);
+      border-color: rgba(85,199,255,.42);
     }
 
     .brand h1 {
       margin: 0;
-      font-size: 34px;
+      font-size: 38px;
       font-weight: 700;
-      letter-spacing: 0.4px;
+      letter-spacing: .3px;
     }
 
     .brand p {
-      margin: 9px 0 0;
-      font-size: 15px;
-      color: #c9d9e8;
+      margin: 10px 0 0;
+      color: #c7d9e8;
+      font-size: 14px;
+      letter-spacing: 2px;
+      font-weight: 500;
     }
 
     .brand-line {
-      width: 90px;
+      width: 110px;
       height: 2px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        #55c7ff,
-        transparent
-      );
-      border-radius: 5px;
-      margin: 17px auto 0;
+      margin: 19px auto 0;
+      border-radius: 20px;
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          #55c7ff,
+          transparent
+        );
     }
 
     .logistics-pills {
@@ -127,62 +158,63 @@
       justify-content: center;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 17px;
+      margin-top: 18px;
     }
 
     .logistics-pills span {
-      padding: 7px 11px;
-      border: 1px solid rgba(255,255,255,.14);
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,.13);
       border-radius: 999px;
       background: rgba(255,255,255,.06);
       color: #d8e8f5;
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: .7px;
-      backdrop-filter: blur(5px);
+      letter-spacing: .8px;
+      backdrop-filter: blur(6px);
     }
 
-    /* =========================
+    /* =========================================
        MAIN
-    ========================= */
+    ========================================= */
 
     .container {
       width: 100%;
-      max-width: 760px;
-      margin: -58px auto 0;
-      padding: 0 18px 40px;
+      max-width: 900px;
+      margin: -67px auto 0;
+      padding: 0 18px 50px;
       position: relative;
       z-index: 3;
       flex: 1;
     }
 
-    /* =========================
-       LOGISTICS STRIP
-    ========================= */
+    /* =========================================
+       PROCESS STRIP
+    ========================================= */
 
     .logistics-strip {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      margin: -18px auto 16px;
-      padding: 11px 16px;
+      gap: 13px;
+      margin: 0 auto 18px;
+      padding: 12px 18px;
       width: fit-content;
       max-width: 100%;
       border: 1px solid #dce7ef;
       border-radius: 999px;
-      background: rgba(255,255,255,.94);
-      box-shadow: 0 10px 28px rgba(15, 48, 76, .10);
+      background: rgba(255,255,255,.96);
+      box-shadow:
+        0 12px 30px rgba(15,48,76,.10);
     }
 
     .strip-item {
       display: flex;
       align-items: center;
       gap: 6px;
-      color: #3b5870;
+      color: #3c5970;
       font-size: 10px;
       font-weight: 800;
-      letter-spacing: .65px;
+      letter-spacing: .7px;
       white-space: nowrap;
     }
 
@@ -192,7 +224,7 @@
     }
 
     .strip-line {
-      width: 26px;
+      width: 28px;
       height: 1px;
       background: #c7d7e3;
       position: relative;
@@ -205,23 +237,23 @@
       top: -9px;
       color: #7da2bc;
       font-size: 13px;
-      background: #fff;
+      background: white;
     }
 
-    /* =========================
+    /* =========================================
        SEARCH CARD
-    ========================= */
+    ========================================= */
 
-    .search-card {
+    .search-card,
+    .result-card {
       position: relative;
       overflow: hidden;
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 32px;
+      background: #fff;
+      border: 1px solid #dfe8ef;
+      border-radius: 20px;
       box-shadow:
-        0 20px 50px rgba(16, 52, 82, .10),
-        0 2px 8px rgba(16, 52, 82, .04);
-      border: 1px solid #e1e9f0;
+        0 24px 60px rgba(16,52,82,.10),
+        0 3px 10px rgba(16,52,82,.035);
     }
 
     .search-card::before,
@@ -235,10 +267,14 @@
       background:
         linear-gradient(
           90deg,
-          #0b3157,
-          #25a6e8,
-          #0b3157
+          #082e50,
+          #20a8e8,
+          #082e50
         );
+    }
+
+    .search-card {
+      padding: 34px;
     }
 
     .section-label {
@@ -246,10 +282,10 @@
       align-items: center;
       gap: 10px;
       margin-bottom: 9px;
-      color: #123d63;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
+      color: #16466e;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
     }
 
@@ -264,13 +300,13 @@
     .search-title h2 {
       margin: 0;
       color: #102f4c;
-      font-size: 25px;
+      font-size: 26px;
       font-weight: 700;
     }
 
     .search-title p {
-      margin: 8px 0 24px;
-      color: #718196;
+      margin: 8px 0 25px;
+      color: #738397;
       font-size: 14px;
     }
 
@@ -290,22 +326,22 @@
       top: 50%;
       transform: translateY(-50%);
       color: #6d8ca8;
-      font-size: 15px;
-      font-weight: bold;
+      font-size: 13px;
+      font-weight: 800;
       pointer-events: none;
     }
 
     .search-box input {
       width: 100%;
-      height: 54px;
-      padding: 0 16px 0 48px;
+      height: 56px;
+      padding: 0 17px 0 52px;
       border: 1px solid #ccd9e5;
-      border-radius: 10px;
+      border-radius: 11px;
       outline: none;
       background: #f8fafc;
       color: #172b3f;
       font-size: 16px;
-      transition: all 0.2s ease;
+      transition: all .2s ease;
     }
 
     .search-box input::placeholder {
@@ -316,43 +352,49 @@
       background: white;
       border-color: #168bd0;
       box-shadow:
-        0 0 0 4px rgba(22, 139, 208, 0.10);
+        0 0 0 4px rgba(22,139,208,.10);
     }
 
     .search-box button {
-      height: 54px;
+      height: 56px;
       padding: 0 28px;
       border: none;
-      border-radius: 10px;
+      border-radius: 11px;
       background:
         linear-gradient(
           135deg,
-          #0b3157,
-          #1267a5
+          #082e50,
+          #126ca8
         );
       color: white;
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all .2s ease;
       white-space: nowrap;
+      box-shadow:
+        0 8px 20px rgba(8,46,80,.16);
     }
 
     .search-box button:hover {
       transform: translateY(-1px);
       box-shadow:
-        0 8px 18px rgba(11, 49, 87, 0.22);
+        0 12px 25px rgba(8,46,80,.22);
+    }
+
+    .search-box button:active {
+      transform: translateY(0);
     }
 
     .search-box button:disabled {
-      opacity: 0.65;
+      opacity: .65;
       cursor: wait;
       transform: none;
     }
 
     .search-note {
       margin-top: 13px;
-      color: #8a9aab;
+      color: #8b9bab;
       font-size: 12px;
     }
 
@@ -371,22 +413,26 @@
       color: #c93636;
     }
 
-    /* =========================
+    /* =========================================
        RESULT CARD
-    ========================= */
+    ========================================= */
 
     .result-card {
       display: none;
-      position: relative;
-      overflow: hidden;
       margin-top: 22px;
-      background: #ffffff;
-      border-radius: 18px;
       padding: 30px;
-      box-shadow:
-        0 20px 50px rgba(16, 52, 82, .10),
-        0 2px 8px rgba(16, 52, 82, .04);
-      border: 1px solid #e1e9f0;
+      animation: resultIn .35s ease;
+    }
+
+    @keyframes resultIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .result-header {
@@ -394,7 +440,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 15px;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
       padding-bottom: 18px;
       border-bottom: 1px solid #e8eef4;
     }
@@ -403,6 +449,23 @@
       display: flex;
       align-items: center;
       gap: 13px;
+    }
+
+    .result-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background:
+        linear-gradient(
+          135deg,
+          #edf7fc,
+          #dceef8
+        );
+      color: #126ca8;
+      font-size: 20px;
     }
 
     .result-header h2 {
@@ -418,8 +481,8 @@
     }
 
     .hbl-badge {
-      padding: 7px 11px;
-      border-radius: 7px;
+      padding: 8px 12px;
+      border-radius: 8px;
       background: #f1f5f8;
       color: #526b80;
       font-size: 12px;
@@ -427,16 +490,16 @@
       white-space: nowrap;
     }
 
-    /* =========================
+    /* =========================================
        STATUS
-    ========================= */
+    ========================================= */
 
     .status-box {
       position: relative;
       overflow: hidden;
-      padding: 22px;
-      margin-bottom: 24px;
-      border-radius: 13px;
+      padding: 21px 22px;
+      margin-bottom: 26px;
+      border-radius: 14px;
       background:
         linear-gradient(
           135deg,
@@ -450,20 +513,31 @@
     .status-box::after {
       content: "";
       position: absolute;
-      width: 100px;
-      height: 100px;
-      border: 1px solid rgba(18,103,165,0.08);
+      width: 130px;
+      height: 130px;
+      border: 1px solid rgba(18,103,165,.08);
       border-radius: 50%;
-      right: -35px;
-      top: -45px;
+      right: -45px;
+      top: -55px;
     }
 
     .status-label {
-      display: block;
+      display: flex;
+      align-items: center;
+      gap: 8px;
       color: #71869a;
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11px;
+      font-weight: 700;
       margin-bottom: 8px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #1ba76c;
+      box-shadow:
+        0 0 0 4px rgba(27,167,108,.10);
     }
 
     .status-value {
@@ -474,62 +548,148 @@
       font-weight: 700;
     }
 
-    /* =========================
-       INFORMATION
-    ========================= */
+    /* =========================================
+       SECTION
+    ========================================= */
+
+    .data-section {
+      margin-top: 26px;
+    }
 
     .info-section-title {
       display: flex;
       align-items: center;
       gap: 9px;
-      margin-bottom: 4px;
+      margin-bottom: 11px;
       color: #173c5d;
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .info-section-title::before {
-      content: "▰";
-      color: #168bd0;
-      font-size: 11px;
+      content: "";
+      width: 4px;
+      height: 17px;
+      border-radius: 5px;
+      background: #168bd0;
     }
 
-    .info-row {
+    /* =========================================
+       INFORMATION GRID
+    ========================================= */
+
+    .info-grid {
       display: grid;
-      grid-template-columns: 190px 1fr;
-      gap: 18px;
-      padding: 14px 0;
-      border-bottom: 1px solid #edf1f5;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
     }
 
-    .info-row:last-child {
-      border-bottom: none;
+    .info-card {
+      min-height: 78px;
+      padding: 14px 15px;
+      border: 1px solid #e2eaf0;
+      border-radius: 11px;
+      background: #f9fbfc;
+      transition: all .2s ease;
+    }
+
+    .info-card:hover {
+      background: #fff;
+      border-color: #cddde8;
+      box-shadow:
+        0 7px 18px rgba(18,61,91,.05);
     }
 
     .info-label {
-      color: #708296;
-      font-size: 14px;
-      font-weight: 600;
+      margin-bottom: 7px;
+      color: #718397;
+      font-size: 11px;
+      font-weight: 700;
     }
 
     .info-value {
       color: #1c344b;
       font-size: 14px;
+      font-weight: 600;
       word-break: break-word;
+      line-height: 1.5;
     }
 
     .info-value.hbl-value {
       color: #0b5f95;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    .info-value.highlight {
+      color: #126ca8;
       font-weight: 700;
     }
 
-    /* =========================
+    /* =========================================
+       TIME / OPERATION GRID
+    ========================================= */
+
+    .time-grid {
+      display: grid;
+      grid-template-columns:
+        repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .time-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 92px;
+      padding: 15px;
+      border: 1px solid #dfe8ef;
+      border-radius: 12px;
+      background:
+        linear-gradient(
+          145deg,
+          #f9fbfd,
+          #f3f7fa
+        );
+    }
+
+    .time-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: #168bd0;
+      opacity: .7;
+    }
+
+    .time-card .info-label {
+      margin-bottom: 9px;
+      padding-left: 4px;
+    }
+
+    .time-card .info-value {
+      padding-left: 4px;
+      color: #0b5f95;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    /* =========================================
+       FULL WIDTH CARD
+    ========================================= */
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    /* =========================================
        FOOTER
-    ========================= */
+    ========================================= */
 
     .footer {
       text-align: center;
-      padding: 24px 15px;
+      padding: 26px 15px;
       color: #8393a3;
       font-size: 12px;
       border-top: 1px solid #dce5ed;
@@ -540,36 +700,42 @@
       color: #526b80;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
+    .footer-line {
+      width: 45px;
+      height: 2px;
+      margin: 0 auto 10px;
+      background: #b9cbd8;
+      border-radius: 5px;
+    }
 
-    @media (max-width: 600px) {
+    /* =========================================
+       MOBILE
+    ========================================= */
+
+    @media (max-width: 700px) {
 
       .header {
-        padding: 28px 15px 95px;
+        padding:
+          29px 15px 105px;
       }
 
       .brand h1 {
-        font-size: 27px;
+        font-size: 29px;
       }
 
       .brand p {
-        font-size: 14px;
-      }
-
-      .logistics-pills span {
-        font-size: 9px;
-        padding: 6px 9px;
+        font-size: 11px;
+        letter-spacing: 1.4px;
       }
 
       .container {
-        margin-top: -48px;
-        padding: 0 12px 30px;
+        margin-top: -55px;
+        padding:
+          0 12px 35px;
       }
 
       .logistics-strip {
-        width: calc(100% - 12px);
+        width: calc(100% - 8px);
         gap: 7px;
         padding: 10px 9px;
       }
@@ -590,7 +756,7 @@
       .search-card,
       .result-card {
         padding: 23px 18px;
-        border-radius: 15px;
+        border-radius: 16px;
       }
 
       .search-title h2 {
@@ -609,22 +775,47 @@
         align-items: flex-start;
       }
 
+      .result-icon {
+        width: 39px;
+        height: 39px;
+        font-size: 17px;
+      }
+
+      .result-header h2 {
+        font-size: 18px;
+      }
+
       .hbl-badge {
         display: none;
       }
 
-      .info-row {
+      .info-grid {
         grid-template-columns: 1fr;
-        gap: 5px;
-        padding: 13px 0;
       }
 
-      .info-label {
-        font-size: 13px;
+      .time-grid {
+        grid-template-columns:
+          repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 450px) {
+
+      .brand h1 {
+        font-size: 25px;
       }
 
-      .info-value {
-        font-size: 14px;
+      .logistics-pills span {
+        font-size: 8px;
+        padding: 6px 8px;
+      }
+
+      .time-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .status-value {
+        font-size: 18px;
       }
     }
   </style>
@@ -632,637 +823,904 @@
 
 <body>
 
-  <div class="page">
+<div class="page">
 
-    <!-- HEADER -->
-    <header class="header">
+  <!-- =======================================
+       HEADER
+  ======================================== -->
 
-      <div class="brand">
+  <header class="header">
 
-        <div class="logistics-mark" aria-hidden="true">
-          <span>▰</span>
-          <span>▰</span>
-          <span>▰</span>
-        </div>
+    <div class="brand">
 
-        <h1>Sino Carco Tracking</h1>
+      <div
+        class="logistics-mark"
+        aria-hidden="true"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <h1>
+        Sino Carco Tracking
+      </h1>
+
+      <p>
+        LOGISTICS • TRANSPORT • WAREHOUSE
+      </p>
+
+      <div class="logistics-pills">
+        <span>🚚 TRANSPORT</span>
+        <span>📦 CARGO</span>
+        <span>🏭 WAREHOUSE</span>
+      </div>
+
+      <div class="brand-line"></div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =======================================
+       MAIN
+  ======================================== -->
+
+  <main class="container">
+
+    <!-- PROCESS -->
+
+    <div
+      class="logistics-strip"
+      aria-hidden="true"
+    >
+
+      <div class="strip-item">
+        <span class="strip-icon">🚛</span>
+        <span>FLEET</span>
+      </div>
+
+      <div class="strip-line"></div>
+
+      <div class="strip-item">
+        <span class="strip-icon">📦</span>
+        <span>SHIPMENT</span>
+      </div>
+
+      <div class="strip-line"></div>
+
+      <div class="strip-item">
+        <span class="strip-icon">🏭</span>
+        <span>WAREHOUSE</span>
+      </div>
+
+      <div class="strip-line"></div>
+
+      <div class="strip-item">
+        <span class="strip-icon">✓</span>
+        <span>DELIVERY</span>
+      </div>
+
+    </div>
+
+
+    <!-- =======================================
+         SEARCH CARD
+    ======================================== -->
+
+    <section class="search-card">
+
+      <div class="section-label">
+        Shipment Tracking
+      </div>
+
+      <div class="search-title">
+
+        <h2>
+          ตรวจสอบสถานะสินค้า
+        </h2>
 
         <p>
-          LOGISTICS • TRANSPORT • WAREHOUSE
+          กรุณากรอก HBL No. เพื่อค้นหาข้อมูลการขนส่งของคุณ
         </p>
 
-        <div class="logistics-pills">
-          <span>🚚 TRANSPORT</span>
-          <span>📦 CARGO</span>
-          <span>🏭 WAREHOUSE</span>
-        </div>
-
-        <div class="brand-line"></div>
-
-      </div>
-
-    </header>
-
-
-    <!-- MAIN -->
-    <main class="container">
-
-      <!-- LOGISTICS STRIP -->
-      <div class="logistics-strip" aria-hidden="true">
-
-        <div class="strip-item">
-          <span class="strip-icon">🚛</span>
-          <span>FLEET</span>
-        </div>
-
-        <div class="strip-line"></div>
-
-        <div class="strip-item">
-          <span class="strip-icon">📦</span>
-          <span>SHIPMENT</span>
-        </div>
-
-        <div class="strip-line"></div>
-
-        <div class="strip-item">
-          <span class="strip-icon">🏭</span>
-          <span>WAREHOUSE</span>
-        </div>
-
-        <div class="strip-line"></div>
-
-        <div class="strip-item">
-          <span class="strip-icon">✓</span>
-          <span>DELIVERY</span>
-        </div>
-
       </div>
 
 
-      <!-- SEARCH -->
-      <section class="search-card">
+      <div class="search-box">
 
-        <div class="section-label">
-          Shipment Tracking
-        </div>
+        <div class="input-wrapper">
 
-        <div class="search-title">
-
-          <h2>
-            ตรวจสอบสถานะสินค้า
-          </h2>
-
-          <p>
-            กรุณากรอก HBL No. เพื่อค้นหาข้อมูลการขนส่งของคุณ
-          </p>
-
-        </div>
-
-
-        <div class="search-box">
-
-          <div class="input-wrapper">
-
-            <span class="input-icon">
-              HBL
-            </span>
-
-            <input
-              type="text"
-              id="hblInput"
-              placeholder="กรอก HBL No."
-              autocomplete="off"
-              spellcheck="false"
-            >
-
-          </div>
-
-
-          <button
-            id="searchButton"
-            onclick="searchHBL()"
-          >
-            ตรวจสอบสถานะ
-          </button>
-
-        </div>
-
-
-        <div class="search-note">
-          ข้อมูลจะแสดงเฉพาะรายการที่ตรงกับ HBL No. ที่ค้นหา
-        </div>
-
-
-        <div id="message"></div>
-
-      </section>
-
-
-      <!-- RESULT -->
-      <section
-        class="result-card"
-        id="resultCard"
-      >
-
-        <div class="result-header">
-
-          <div class="result-heading">
-
-            <div>
-
-              <h2>
-                Shipment Information
-              </h2>
-
-              <p>
-                รายละเอียดการขนส่ง
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div
-            class="hbl-badge"
-            id="hblBadge"
-          >
+          <span class="input-icon">
             HBL
-          </div>
-
-        </div>
-
-
-        <!-- STATUS -->
-        <div class="status-box">
-
-          <span class="status-label">
-            สถานะการขนส่ง
           </span>
 
-          <div
-            class="status-value"
-            id="statusBox"
+          <input
+            type="text"
+            id="hblInput"
+            placeholder="กรอก HBL No."
+            autocomplete="off"
+            spellcheck="false"
           >
-            -
+
+        </div>
+
+
+        <button
+          id="searchButton"
+          onclick="searchHBL()"
+        >
+          ตรวจสอบสถานะ
+        </button>
+
+      </div>
+
+
+      <div class="search-note">
+        ข้อมูลจะแสดงเฉพาะรายการที่ตรงกับ HBL No. ที่ค้นหา
+      </div>
+
+
+      <div id="message"></div>
+
+    </section>
+
+
+    <!-- =======================================
+         RESULT CARD
+    ======================================== -->
+
+    <section
+      class="result-card"
+      id="resultCard"
+    >
+
+      <!-- RESULT HEADER -->
+
+      <div class="result-header">
+
+        <div class="result-heading">
+
+          <div class="result-icon">
+            📦
+          </div>
+
+          <div>
+
+            <h2>
+              Shipment Information
+            </h2>
+
+            <p>
+              รายละเอียดการขนส่ง
+            </p>
+
           </div>
 
         </div>
 
+
+        <div
+          class="hbl-badge"
+          id="hblBadge"
+        >
+          HBL
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           STATUS
+      ====================================== -->
+
+      <div class="status-box">
+
+        <span class="status-label">
+          <span class="status-dot"></span>
+          สถานะการขนส่ง
+        </span>
+
+        <div
+          class="status-value"
+          id="statusBox"
+        >
+          -
+        </div>
+
+      </div>
+
+
+      <!-- =====================================
+           SHIPMENT
+      ====================================== -->
+
+      <div class="data-section">
 
         <div class="info-section-title">
           ข้อมูล Shipment
         </div>
 
 
-        <div class="info-row">
+        <div class="info-grid">
 
-          <div class="info-label">
-            HBL No.
+          <div class="info-card">
+
+            <div class="info-label">
+              HBL No.
+            </div>
+
+            <div
+              class="info-value hbl-value"
+              id="hbl"
+            >
+              -
+            </div>
+
           </div>
 
-          <div
-            class="info-value hbl-value"
-            id="hbl"
-          >
-            -
+
+          <div class="info-card">
+
+            <div class="info-label">
+              Booking no.
+            </div>
+
+            <div
+              class="info-value highlight"
+              id="booking"
+            >
+              -
+            </div>
+
           </div>
 
-        </div>
 
+          <div class="info-card">
 
-        <div class="info-row">
+            <div class="info-label">
+              ชื่อลูกค้า
+            </div>
 
-          <div class="info-label">
-            ชื่อลูกค้า
+            <div
+              class="info-value"
+              id="customer"
+            >
+              -
+            </div>
+
           </div>
 
-          <div
-            class="info-value"
-            id="customer"
-          >
-            -
+
+          <div class="info-card">
+
+            <div class="info-label">
+              สถานที่โหลดสินค้า
+            </div>
+
+            <div
+              class="info-value"
+              id="location"
+            >
+              -
+            </div>
+
           </div>
 
-        </div>
 
+          <div class="info-card">
 
-        <div class="info-row">
+            <div class="info-label">
+              QTY
+            </div>
 
-          <div class="info-label">
-            สถานที่โหลดสินค้า
+            <div
+              class="info-value highlight"
+              id="qty"
+            >
+              -
+            </div>
+
           </div>
 
-          <div
-            class="info-value"
-            id="location"
-          >
-            -
-          </div>
 
-        </div>
+          <div class="info-card full-width">
 
+            <div class="info-label">
+              REMARK
+            </div>
 
-        <div class="info-row">
+            <div
+              class="info-value"
+              id="remark"
+            >
+              -
+            </div>
 
-          <div class="info-label">
-            วันที่เข้า
-          </div>
-
-          <div
-            class="info-value"
-            id="dateIn"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <div class="info-row">
-
-          <div class="info-label">
-            เวลารถเข้า
-          </div>
-
-          <div
-            class="info-value"
-            id="timeIn"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <div class="info-row">
-
-          <div class="info-label">
-            เวลารถออก
-          </div>
-
-          <div
-            class="info-value"
-            id="timeOut"
-          >
-            -
-          </div>
-
-        </div>
-
-
-        <div class="info-row">
-
-          <div class="info-label">
-            ลักษณะงาน
-          </div>
-
-          <div
-            class="info-value"
-            id="jobType"
-          >
-            -
           </div>
 
         </div>
 
+      </div>
 
-        <div class="info-row">
 
-          <div class="info-label">
-            ทะเบียนรถ
+      <!-- =====================================
+           OPERATION / TIME
+      ====================================== -->
+
+      <div class="data-section">
+
+        <div class="info-section-title">
+          ข้อมูลการขนส่งและเวลา
+        </div>
+
+
+        <div class="time-grid">
+
+          <div class="time-card">
+
+            <div class="info-label">
+              วันที่เข้า
+            </div>
+
+            <div
+              class="info-value"
+              id="dateIn"
+            >
+              -
+            </div>
+
           </div>
 
-          <div
-            class="info-value"
-            id="truck"
-          >
-            -
+
+          <div class="time-card">
+
+            <div class="info-label">
+              เวลารถเข้า
+            </div>
+
+            <div
+              class="info-value"
+              id="timeIn"
+            >
+              -
+            </div>
+
+          </div>
+
+
+          <div class="time-card">
+
+            <div class="info-label">
+              เวลาเริ่มโหลดสินค้า
+            </div>
+
+            <div
+              class="info-value"
+              id="timeStart"
+            >
+              -
+            </div>
+
+          </div>
+
+
+          <div class="time-card">
+
+            <div class="info-label">
+              เวลาโหลดสินค้าเสร็จ
+            </div>
+
+            <div
+              class="info-value"
+              id="timeFinish"
+            >
+              -
+            </div>
+
+          </div>
+
+
+          <div class="time-card">
+
+            <div class="info-label">
+              เวลารถออก
+            </div>
+
+            <div
+              class="info-value"
+              id="timeOut"
+            >
+              -
+            </div>
+
+          </div>
+
+
+          <div class="time-card">
+
+            <div class="info-label">
+              ลักษณะงาน
+            </div>
+
+            <div
+              class="info-value"
+              id="jobType"
+            >
+              -
+            </div>
+
           </div>
 
         </div>
 
+      </div>
 
-        <div class="info-row">
 
-          <div class="info-label">
-            จำนวนสินค้า
+      <!-- =====================================
+           COMPANY
+      ====================================== -->
+
+      <div class="data-section">
+
+        <div class="info-section-title">
+          ข้อมูลบริษัทและผู้ขับขี่
+        </div>
+
+
+        <div class="info-grid">
+
+          <div class="info-card">
+
+            <div class="info-label">
+              ชื่อบริษัท
+            </div>
+
+            <div
+              class="info-value"
+              id="company"
+            >
+              -
+            </div>
+
           </div>
 
-          <div
-            class="info-value"
-            id="qty"
-          >
-            -
+
+          <div class="info-card">
+
+            <div class="info-label">
+              ชื่อ พขร.
+            </div>
+
+            <div
+              class="info-value"
+              id="driver"
+            >
+              -
+            </div>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <div class="info-label">
+              TEL
+            </div>
+
+            <div
+              class="info-value"
+              id="tel"
+            >
+              -
+            </div>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <div class="info-label">
+              ทะเบียนรถ
+            </div>
+
+            <div
+              class="info-value highlight"
+              id="truck"
+            >
+              -
+            </div>
+
+          </div>
+
+
+          <div class="info-card">
+
+            <div class="info-label">
+              ยี่ห้อรถ
+            </div>
+
+            <div
+              class="info-value"
+              id="truckBrand"
+            >
+              -
+            </div>
+
           </div>
 
         </div>
 
+      </div>
 
-        <div class="info-row">
+    </section>
 
-          <div class="info-label">
-            หมายเหตุ
-          </div>
-
-          <div
-            class="info-value"
-            id="remark"
-          >
-            -
-          </div>
-
-        </div>
-
-      </section>
-
-    </main>
+  </main>
 
 
-    <!-- FOOTER -->
-    <footer class="footer">
+  <!-- =======================================
+       FOOTER
+  ======================================== -->
 
-      <strong>Sino Carco Tracking</strong>
-      &nbsp;•&nbsp;
-      ระบบตรวจสอบสถานะการขนส่ง
+  <footer class="footer">
 
-    </footer>
+    <div class="footer-line"></div>
 
-  </div>
+    <strong>
+      Sino Carco Tracking
+    </strong>
 
+    &nbsp;•&nbsp;
 
-  <script>
+    ระบบตรวจสอบสถานะการขนส่ง
 
-    /* =========================
-       GOOGLE APPS SCRIPT API
-    ========================= */
+  </footer>
 
-    const API_URL =
-      "https://script.google.com/macros/s/AKfycbxhVFDQm85n8wS14oSNeJYKuT8gERdPTc-KTOwhA1Jubnh0kDTUyZmMySe8NK1YMVxI4Q/exec";
+</div>
 
 
-    /* =========================
-       SET TEXT
-    ========================= */
+<script>
 
-    function setText(id, value) {
+  /* =========================================
+     GOOGLE APPS SCRIPT API
+  ========================================= */
 
-      const element =
-        document.getElementById(id);
+  const API_URL =
+    "https://script.google.com/macros/s/AKfycbxhVFDQm85n8wS14oSNeJYKuT8gERdPTc-KTOwhA1Jubnh0kDTUyZmMySe8NK1YMVxI4Q/exec";
 
-      element.textContent =
-        value !== undefined &&
-        value !== null &&
-        String(value).trim() !== ""
-          ? value
-          : "-";
 
+  /* =========================================
+     SET TEXT
+  ========================================= */
+
+  function setText(id, value) {
+
+    const element =
+      document.getElementById(id);
+
+    if (!element) {
+      return;
+    }
+
+    element.textContent =
+      value !== undefined &&
+      value !== null &&
+      String(value).trim() !== ""
+        ? value
+        : "-";
+  }
+
+
+  /* =========================================
+     SEARCH HBL
+  ========================================= */
+
+  function searchHBL() {
+
+    const input =
+      document.getElementById("hblInput");
+
+    const button =
+      document.getElementById("searchButton");
+
+    const message =
+      document.getElementById("message");
+
+    const resultCard =
+      document.getElementById("resultCard");
+
+    const hblBadge =
+      document.getElementById("hblBadge");
+
+
+    const hbl =
+      input.value.trim();
+
+
+    /* -----------------------------------------
+       ซ่อนผลลัพธ์เดิม
+    ----------------------------------------- */
+
+    resultCard.style.display = "none";
+
+    message.className = "";
+
+    message.textContent = "";
+
+
+    /* -----------------------------------------
+       ตรวจสอบ HBL
+    ----------------------------------------- */
+
+    if (!hbl) {
+
+      message.className = "error";
+
+      message.textContent =
+        "กรุณากรอก HBL No.";
+
+      input.focus();
+
+      return;
     }
 
 
-    /* =========================
-       SEARCH HBL
-    ========================= */
+    /* -----------------------------------------
+       Loading
+    ----------------------------------------- */
 
-    function searchHBL() {
+    button.disabled = true;
 
-      const input =
-        document.getElementById("hblInput");
+    button.textContent =
+      "กำลังตรวจสอบ...";
 
-      const button =
-        document.getElementById("searchButton");
+    message.className =
+      "loading";
 
-      const message =
-        document.getElementById("message");
-
-      const resultCard =
-        document.getElementById("resultCard");
-
-      const hblBadge =
-        document.getElementById("hblBadge");
+    message.textContent =
+      "กำลังค้นหาข้อมูลการขนส่ง...";
 
 
-      const hbl =
-        input.value.trim();
+    /* -----------------------------------------
+       เรียก Google Apps Script
+    ----------------------------------------- */
+
+    fetch(
+      API_URL +
+      "?hbl=" +
+      encodeURIComponent(hbl)
+    )
+
+    .then(response => {
+
+      if (!response.ok) {
+
+        throw new Error(
+          "Network error"
+        );
+
+      }
+
+      return response.json();
+
+    })
 
 
-      /* ซ่อนผลเก่าทุกครั้ง */
+    .then(result => {
 
-      resultCard.style.display = "none";
+      /* ---------------------------------------
+         ไม่พบข้อมูล
+      --------------------------------------- */
 
-      message.className = "";
+      if (!result.success) {
 
-      message.textContent = "";
-
-
-      /* ตรวจสอบช่องว่าง */
-
-      if (!hbl) {
-
-        message.className = "error";
+        message.className =
+          "error";
 
         message.textContent =
-          "กรุณากรอก HBL No.";
-
-        input.focus();
+          result.message ||
+          "ไม่พบข้อมูลสำหรับ HBL No. นี้";
 
         return;
 
       }
 
 
-      /* Loading */
+      /* ---------------------------------------
+         ข้อมูลที่พบ
+      --------------------------------------- */
 
-      button.disabled = true;
+      const data =
+        result.data;
 
-      button.textContent =
-        "กำลังตรวจสอบ...";
 
-      message.className =
-        "loading";
+      /* =======================================
+         SHIPMENT
+      ======================================== */
 
-      message.textContent =
-        "กำลังค้นหาข้อมูลการขนส่ง...";
-
-
-      /* เรียก Google Apps Script */
-
-      fetch(
-        API_URL +
-        "?hbl=" +
-        encodeURIComponent(hbl)
-      )
-
-      .then(response => {
-
-        if (!response.ok) {
-
-          throw new Error(
-            "Network error"
-          );
-
-        }
-
-        return response.json();
-
-      })
-
-
-      .then(result => {
-
-        /* ไม่พบข้อมูล */
-
-        if (!result.success) {
-
-          message.className =
-            "error";
-
-          message.textContent =
-            result.message ||
-            "ไม่พบข้อมูลสำหรับ HBL No. นี้";
-
-          return;
-
-        }
-
-
-        /* ข้อมูลที่พบ */
-
-        const data =
-          result.data;
-
-
-        /* แสดงเฉพาะข้อมูลที่ต้องการ */
-
-        setText(
-          "hbl",
-          data["HBL no."]
-        );
-
-        setText(
-          "customer",
-          data["ชื่อลูกค้า"]
-        );
-
-        setText(
-          "location",
-          data["สถานที่โหลดสินค้า"]
-        );
-
-        setText(
-          "dateIn",
-          data["วันที่เข้า"]
-        );
-
-        setText(
-          "timeIn",
-          data["เวลารถเข้า"]
-        );
-
-        setText(
-          "timeOut",
-          data["เวลารถออก"]
-        );
-
-        setText(
-          "jobType",
-          data["ลักษณะงาน"]
-        );
-
-        setText(
-          "truck",
-          data["ทะเบียนรถ"]
-        );
-
-        setText(
-          "qty",
-          data["QTY"]
-        );
-
-        setText(
-          "remark",
-          data["REMARK"]
-        );
-
-
-        /* สถานะ */
-
-        setText(
-          "statusBox",
-          data["Result"] ||
-          "อยู่ระหว่างดำเนินการ"
-        );
-
-
-        /* HBL Badge */
-
-        hblBadge.textContent =
-          data["HBL no."] || hbl;
-
-
-        /* แสดงผล */
-
-        resultCard.style.display =
-          "block";
-
-        message.textContent = "";
-
-
-        /* เลื่อนไปยังผลลัพธ์ */
-
-        resultCard.scrollIntoView({
-          behavior: "smooth",
-          block: "start"
-        });
-
-      })
-
-
-      .catch(error => {
-
-        console.error(error);
-
-        message.className =
-          "error";
-
-        message.textContent =
-          "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง";
-
-      })
-
-
-      .finally(() => {
-
-        button.disabled = false;
-
-        button.textContent =
-          "ตรวจสอบสถานะ";
-
-      });
-
-    }
-
-
-    /* =========================
-       ENTER TO SEARCH
-    ========================= */
-
-    document
-      .getElementById("hblInput")
-      .addEventListener(
-        "keydown",
-        function(event) {
-
-          if (event.key === "Enter") {
-
-            searchHBL();
-
-          }
-
-        }
+      setText(
+        "hbl",
+        data["HBL no."]
       );
 
-  </script>
+      setText(
+        "booking",
+        data["Booking no."]
+      );
+
+      setText(
+        "customer",
+        data["ชื่อลูกค้า"]
+      );
+
+      setText(
+        "location",
+        data["สถานที่โหลดสินค้า"]
+      );
+
+      setText(
+        "qty",
+        data["QTY"]
+      );
+
+      setText(
+        "remark",
+        data["REMARK"]
+      );
+
+
+      /* =======================================
+         OPERATION / TIME
+      ======================================== */
+
+      setText(
+        "dateIn",
+        data["วันที่เข้า"]
+      );
+
+      setText(
+        "timeIn",
+        data["เวลารถเข้า"]
+      );
+
+      setText(
+        "timeStart",
+        data["เวลาเริ่มโหลดสินค้า"]
+      );
+
+      setText(
+        "timeFinish",
+        data["เวลาโหลดสินค้าเสร็จ"]
+      );
+
+      setText(
+        "timeOut",
+        data["เวลารถออก"]
+      );
+
+      setText(
+        "jobType",
+        data["ลักษณะงาน"]
+      );
+
+
+      /* =======================================
+         COMPANY / DRIVER
+      ======================================== */
+
+      setText(
+        "company",
+        data["ชื่อบริษัท"]
+      );
+
+      setText(
+        "driver",
+        data["ชื่อ พขร."]
+      );
+
+      setText(
+        "tel",
+        data["TEL"]
+      );
+
+      setText(
+        "truck",
+        data["ทะเบียนรถ"]
+      );
+
+      setText(
+        "truckBrand",
+        data["ยี่ห้อรถ"]
+      );
+
+
+      /* =======================================
+         STATUS
+      ======================================== */
+
+      setText(
+        "statusBox",
+        data["Result"] ||
+        "อยู่ระหว่างดำเนินการ"
+      );
+
+
+      /* =======================================
+         HBL BADGE
+      ======================================== */
+
+      hblBadge.textContent =
+        data["HBL no."] || hbl;
+
+
+      /* =======================================
+         SHOW RESULT
+      ======================================== */
+
+      resultCard.style.display =
+        "block";
+
+      message.textContent = "";
+
+
+      /* =======================================
+         SCROLL TO RESULT
+      ======================================== */
+
+      resultCard.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+    })
+
+
+    .catch(error => {
+
+      console.error(error);
+
+      message.className =
+        "error";
+
+      message.textContent =
+        "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง";
+
+    })
+
+
+    .finally(() => {
+
+      button.disabled = false;
+
+      button.textContent =
+        "ตรวจสอบสถานะ";
+
+    });
+
+  }
+
+
+  /* =========================================
+     ENTER TO SEARCH
+  ========================================= */
+
+  document
+    .getElementById("hblInput")
+    .addEventListener(
+      "keydown",
+      function(event) {
+
+        if (event.key === "Enter") {
+
+          searchHBL();
+
+        }
+
+      }
+    );
+
+</script>
 
 </body>
 </html>
