@@ -37,7 +37,7 @@
       position: relative;
       overflow: hidden;
       background:
-        linear-gradient(135deg, #071d35 0%, #0b3157 55%, #1267a5 100%);
+        linear-gradient(135deg, #06182d 0%, #0a2d4d 52%, #0c5b8f 100%);
       color: white;
       padding: 34px 20px 105px;
       text-align: center;
@@ -47,23 +47,29 @@
     .header::before {
       content: "";
       position: absolute;
-      width: 320px;
-      height: 320px;
+      width: 420px;
+      height: 420px;
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 50%;
-      right: -100px;
-      top: -160px;
+      right: -150px;
+      top: -230px;
+      box-shadow:
+        0 0 0 45px rgba(255,255,255,0.018),
+        0 0 0 90px rgba(255,255,255,0.012);
     }
 
     .header::after {
       content: "";
       position: absolute;
-      width: 220px;
-      height: 220px;
+      width: 300px;
+      height: 300px;
       border: 1px solid rgba(255,255,255,0.07);
       border-radius: 50%;
-      left: -100px;
-      bottom: -150px;
+      left: -145px;
+      bottom: -205px;
+      box-shadow:
+        0 0 0 35px rgba(255,255,255,0.018),
+        0 0 0 70px rgba(255,255,255,0.012);
     }
 
     .brand {
@@ -71,22 +77,23 @@
       z-index: 2;
     }
 
-    .logo {
-      width: 72px;
-      height: 72px;
-      margin: 0 auto 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.30);
+    /* Logistics decorative mark */
+
+    .logistics-mark {
       display: flex;
-      align-items: center;
       justify-content: center;
-      font-size: 24px;
-      font-weight: 800;
-      letter-spacing: 1px;
-      box-shadow:
-        0 8px 25px rgba(0,0,0,0.15),
-        inset 0 1px 0 rgba(255,255,255,0.15);
+      gap: 6px;
+      margin: 0 auto 18px;
+      opacity: .85;
+    }
+
+    .logistics-mark span {
+      width: 22px;
+      height: 13px;
+      display: block;
+      border: 1px solid rgba(255,255,255,.38);
+      background: rgba(255,255,255,.08);
+      transform: skewX(-18deg);
     }
 
     .brand h1 {
@@ -103,11 +110,36 @@
     }
 
     .brand-line {
-      width: 55px;
-      height: 3px;
-      background: #3db7ff;
+      width: 90px;
+      height: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        #55c7ff,
+        transparent
+      );
       border-radius: 5px;
       margin: 17px auto 0;
+    }
+
+    .logistics-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 17px;
+    }
+
+    .logistics-pills span {
+      padding: 7px 11px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: #d8e8f5;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .7px;
+      backdrop-filter: blur(5px);
     }
 
     /* =========================
@@ -125,15 +157,88 @@
     }
 
     /* =========================
+       LOGISTICS STRIP
+    ========================= */
+
+    .logistics-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: -18px auto 16px;
+      padding: 11px 16px;
+      width: fit-content;
+      max-width: 100%;
+      border: 1px solid #dce7ef;
+      border-radius: 999px;
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 10px 28px rgba(15, 48, 76, .10);
+    }
+
+    .strip-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #3b5870;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .65px;
+      white-space: nowrap;
+    }
+
+    .strip-icon {
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    .strip-line {
+      width: 26px;
+      height: 1px;
+      background: #c7d7e3;
+      position: relative;
+    }
+
+    .strip-line::after {
+      content: "›";
+      position: absolute;
+      right: -2px;
+      top: -9px;
+      color: #7da2bc;
+      font-size: 13px;
+      background: #fff;
+    }
+
+    /* =========================
        SEARCH CARD
     ========================= */
 
     .search-card {
+      position: relative;
+      overflow: hidden;
       background: #ffffff;
       border-radius: 18px;
       padding: 32px;
-      box-shadow: 0 18px 45px rgba(20, 55, 85, 0.12);
+      box-shadow:
+        0 20px 50px rgba(16, 52, 82, .10),
+        0 2px 8px rgba(16, 52, 82, .04);
       border: 1px solid #e1e9f0;
+    }
+
+    .search-card::before,
+    .result-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 3px;
+      background:
+        linear-gradient(
+          90deg,
+          #0b3157,
+          #25a6e8,
+          #0b3157
+        );
     }
 
     .section-label {
@@ -210,7 +315,8 @@
     .search-box input:focus {
       background: white;
       border-color: #168bd0;
-      box-shadow: 0 0 0 4px rgba(22, 139, 208, 0.10);
+      box-shadow:
+        0 0 0 4px rgba(22, 139, 208, 0.10);
     }
 
     .search-box button {
@@ -218,7 +324,12 @@
       padding: 0 28px;
       border: none;
       border-radius: 10px;
-      background: linear-gradient(135deg, #0b3157, #1267a5);
+      background:
+        linear-gradient(
+          135deg,
+          #0b3157,
+          #1267a5
+        );
       color: white;
       font-size: 15px;
       font-weight: 700;
@@ -229,7 +340,8 @@
 
     .search-box button:hover {
       transform: translateY(-1px);
-      box-shadow: 0 8px 18px rgba(11, 49, 87, 0.22);
+      box-shadow:
+        0 8px 18px rgba(11, 49, 87, 0.22);
     }
 
     .search-box button:disabled {
@@ -265,11 +377,15 @@
 
     .result-card {
       display: none;
+      position: relative;
+      overflow: hidden;
       margin-top: 22px;
       background: #ffffff;
       border-radius: 18px;
       padding: 30px;
-      box-shadow: 0 18px 45px rgba(20, 55, 85, 0.12);
+      box-shadow:
+        0 20px 50px rgba(16, 52, 82, .10),
+        0 2px 8px rgba(16, 52, 82, .04);
       border: 1px solid #e1e9f0;
     }
 
@@ -287,19 +403,6 @@
       display: flex;
       align-items: center;
       gap: 13px;
-    }
-
-    .result-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 11px;
-      background: #eaf5fc;
-      color: #1267a5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 14px;
     }
 
     .result-header h2 {
@@ -334,12 +437,14 @@
       padding: 22px;
       margin-bottom: 24px;
       border-radius: 13px;
-      background: linear-gradient(
-        135deg,
-        #f1f8fc,
-        #e8f3fa
-      );
+      background:
+        linear-gradient(
+          135deg,
+          #f3f9fc,
+          #e8f4fa
+        );
       border: 1px solid #d7e8f3;
+      border-left: 4px solid #168bd0;
     }
 
     .status-box::after {
@@ -374,10 +479,19 @@
     ========================= */
 
     .info-section-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
       margin-bottom: 4px;
       color: #173c5d;
       font-size: 14px;
       font-weight: 700;
+    }
+
+    .info-section-title::before {
+      content: "▰";
+      color: #168bd0;
+      font-size: 11px;
     }
 
     .info-row {
@@ -436,12 +550,6 @@
         padding: 28px 15px 95px;
       }
 
-      .logo {
-        width: 62px;
-        height: 62px;
-        font-size: 21px;
-      }
-
       .brand h1 {
         font-size: 27px;
       }
@@ -450,9 +558,33 @@
         font-size: 14px;
       }
 
+      .logistics-pills span {
+        font-size: 9px;
+        padding: 6px 9px;
+      }
+
       .container {
         margin-top: -48px;
         padding: 0 12px 30px;
+      }
+
+      .logistics-strip {
+        width: calc(100% - 12px);
+        gap: 7px;
+        padding: 10px 9px;
+      }
+
+      .strip-item {
+        font-size: 8px;
+        gap: 3px;
+      }
+
+      .strip-icon {
+        font-size: 13px;
+      }
+
+      .strip-line {
+        width: 10px;
       }
 
       .search-card,
@@ -507,15 +639,23 @@
 
       <div class="brand">
 
-        <div class="logo">
-          SC
+        <div class="logistics-mark" aria-hidden="true">
+          <span>▰</span>
+          <span>▰</span>
+          <span>▰</span>
         </div>
 
         <h1>Sino Carco Tracking</h1>
 
         <p>
-          ระบบตรวจสอบสถานะการขนส่ง
+          LOGISTICS • TRANSPORT • WAREHOUSE
         </p>
+
+        <div class="logistics-pills">
+          <span>🚚 TRANSPORT</span>
+          <span>📦 CARGO</span>
+          <span>🏭 WAREHOUSE</span>
+        </div>
 
         <div class="brand-line"></div>
 
@@ -526,6 +666,38 @@
 
     <!-- MAIN -->
     <main class="container">
+
+      <!-- LOGISTICS STRIP -->
+      <div class="logistics-strip" aria-hidden="true">
+
+        <div class="strip-item">
+          <span class="strip-icon">🚛</span>
+          <span>FLEET</span>
+        </div>
+
+        <div class="strip-line"></div>
+
+        <div class="strip-item">
+          <span class="strip-icon">📦</span>
+          <span>SHIPMENT</span>
+        </div>
+
+        <div class="strip-line"></div>
+
+        <div class="strip-item">
+          <span class="strip-icon">🏭</span>
+          <span>WAREHOUSE</span>
+        </div>
+
+        <div class="strip-line"></div>
+
+        <div class="strip-item">
+          <span class="strip-icon">✓</span>
+          <span>DELIVERY</span>
+        </div>
+
+      </div>
+
 
       <!-- SEARCH -->
       <section class="search-card">
@@ -595,10 +767,6 @@
         <div class="result-header">
 
           <div class="result-heading">
-
-            <div class="result-icon">
-              SC
-            </div>
 
             <div>
 
@@ -827,7 +995,6 @@
 
     /* =========================
        GOOGLE APPS SCRIPT API
-       ใช้ URL เดิม
     ========================= */
 
     const API_URL =
@@ -844,7 +1011,11 @@
         document.getElementById(id);
 
       element.textContent =
-        value || "-";
+        value !== undefined &&
+        value !== null &&
+        String(value).trim() !== ""
+          ? value
+          : "-";
 
     }
 
@@ -961,61 +1132,52 @@
           result.data;
 
 
-        /* แสดงเฉพาะ HBL ที่ค้นหา */
+        /* แสดงเฉพาะข้อมูลที่ต้องการ */
 
         setText(
           "hbl",
           data["HBL no."]
         );
 
-
         setText(
           "customer",
           data["ชื่อลูกค้า"]
         );
-
 
         setText(
           "location",
           data["สถานที่โหลดสินค้า"]
         );
 
-
         setText(
           "dateIn",
           data["วันที่เข้า"]
         );
-
 
         setText(
           "timeIn",
           data["เวลารถเข้า"]
         );
 
-
         setText(
           "timeOut",
           data["เวลารถออก"]
         );
-
 
         setText(
           "jobType",
           data["ลักษณะงาน"]
         );
 
-
         setText(
           "truck",
           data["ทะเบียนรถ"]
         );
 
-
         setText(
           "qty",
           data["QTY"]
         );
-
 
         setText(
           "remark",
