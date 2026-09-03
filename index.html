@@ -4,19 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Tracking LF</title>
+  <title>Sino Carco Tracking</title>
 
   <style>
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, "Noto Sans Thai", sans-serif;
       min-height: 100vh;
-      background: linear-gradient(135deg, #e0f7ff, #f5fbff);
-      color: #16324f;
+      background: #eef3f8;
+      color: #172b3f;
     }
 
     .page {
@@ -25,115 +29,207 @@
       flex-direction: column;
     }
 
+    /* =========================
+       HEADER
+    ========================= */
+
     .header {
-      background: linear-gradient(135deg, #08aeea, #2f80ed);
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, #071d35 0%, #0b3157 55%, #1267a5 100%);
       color: white;
-      padding: 28px 20px 70px;
+      padding: 34px 20px 105px;
       text-align: center;
-      border-radius: 0 0 35px 35px;
-      box-shadow: 0 8px 25px rgba(47, 128, 237, 0.20);
+      box-shadow: 0 8px 30px rgba(7, 29, 53, 0.22);
+    }
+
+    .header::before {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 50%;
+      right: -100px;
+      top: -160px;
+    }
+
+    .header::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 50%;
+      left: -100px;
+      bottom: -150px;
+    }
+
+    .brand {
+      position: relative;
+      z-index: 2;
     }
 
     .logo {
-      width: 64px;
-      height: 64px;
-      margin: 0 auto 14px;
-      background: rgba(255, 255, 255, 0.20);
-      border: 2px solid rgba(255, 255, 255, 0.55);
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 16px;
       border-radius: 18px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.30);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
-      font-weight: bold;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      box-shadow:
+        0 8px 25px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.15);
     }
 
-    .header h1 {
+    .brand h1 {
       margin: 0;
       font-size: 34px;
-      letter-spacing: 0.5px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
     }
 
-    .header p {
-      margin: 8px 0 0;
-      font-size: 16px;
-      opacity: 0.95;
+    .brand p {
+      margin: 9px 0 0;
+      font-size: 15px;
+      color: #c9d9e8;
     }
+
+    .brand-line {
+      width: 55px;
+      height: 3px;
+      background: #3db7ff;
+      border-radius: 5px;
+      margin: 17px auto 0;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
 
     .container {
       width: 100%;
-      max-width: 680px;
-      margin: -42px auto 0;
-      padding: 0 18px 35px;
+      max-width: 760px;
+      margin: -58px auto 0;
+      padding: 0 18px 40px;
       position: relative;
-      z-index: 2;
+      z-index: 3;
       flex: 1;
     }
 
+    /* =========================
+       SEARCH CARD
+    ========================= */
+
     .search-card {
-      background: white;
-      border-radius: 22px;
-      padding: 28px;
-      box-shadow: 0 12px 35px rgba(30, 100, 160, 0.12);
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 18px 45px rgba(20, 55, 85, 0.12);
+      border: 1px solid #e1e9f0;
     }
 
-    .search-title {
-      text-align: center;
-      margin-bottom: 20px;
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 9px;
+      color: #123d63;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .section-label::before {
+      content: "";
+      width: 28px;
+      height: 3px;
+      background: #168bd0;
+      border-radius: 5px;
     }
 
     .search-title h2 {
-      margin: 0 0 8px;
-      color: #1261a0;
-      font-size: 22px;
+      margin: 0;
+      color: #102f4c;
+      font-size: 25px;
+      font-weight: 700;
     }
 
     .search-title p {
-      margin: 0;
-      color: #718096;
+      margin: 8px 0 24px;
+      color: #718196;
       font-size: 14px;
     }
 
     .search-box {
       display: flex;
-      gap: 10px;
+      gap: 12px;
+    }
+
+    .input-wrapper {
+      flex: 1;
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6d8ca8;
+      font-size: 15px;
+      font-weight: bold;
+      pointer-events: none;
     }
 
     .search-box input {
-      flex: 1;
-      min-width: 0;
-      padding: 15px 17px;
-      border: 2px solid #d7eaf7;
-      border-radius: 12px;
+      width: 100%;
+      height: 54px;
+      padding: 0 16px 0 48px;
+      border: 1px solid #ccd9e5;
+      border-radius: 10px;
       outline: none;
+      background: #f8fafc;
+      color: #172b3f;
       font-size: 16px;
-      color: #16324f;
-      background: #fafdff;
-      transition: 0.2s;
+      transition: all 0.2s ease;
+    }
+
+    .search-box input::placeholder {
+      color: #9aaaba;
     }
 
     .search-box input:focus {
-      border-color: #20a9f5;
       background: white;
-      box-shadow: 0 0 0 4px rgba(32, 169, 245, 0.10);
+      border-color: #168bd0;
+      box-shadow: 0 0 0 4px rgba(22, 139, 208, 0.10);
     }
 
     .search-box button {
-      padding: 15px 25px;
+      height: 54px;
+      padding: 0 28px;
       border: none;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #08aeea, #2f80ed);
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0b3157, #1267a5);
       color: white;
-      font-size: 16px;
-      font-weight: bold;
+      font-size: 15px;
+      font-weight: 700;
       cursor: pointer;
-      transition: 0.2s;
+      transition: all 0.2s ease;
       white-space: nowrap;
     }
 
     .search-box button:hover {
       transform: translateY(-1px);
-      box-shadow: 0 7px 16px rgba(47, 128, 237, 0.25);
+      box-shadow: 0 8px 18px rgba(11, 49, 87, 0.22);
     }
 
     .search-box button:disabled {
@@ -142,68 +238,154 @@
       transform: none;
     }
 
+    .search-note {
+      margin-top: 13px;
+      color: #8a9aab;
+      font-size: 12px;
+    }
+
     #message {
       margin-top: 18px;
       text-align: center;
-      font-size: 15px;
+      font-size: 14px;
+      min-height: 20px;
     }
 
     .loading {
-      color: #1688d4;
+      color: #167db8;
     }
 
     .error {
-      color: #dc3545;
+      color: #c93636;
     }
+
+    /* =========================
+       RESULT CARD
+    ========================= */
 
     .result-card {
       display: none;
-      margin-top: 20px;
-      background: white;
-      border-radius: 22px;
-      padding: 28px;
-      box-shadow: 0 12px 35px rgba(30, 100, 160, 0.12);
+      margin-top: 22px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 18px 45px rgba(20, 55, 85, 0.12);
+      border: 1px solid #e1e9f0;
     }
 
     .result-header {
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
       margin-bottom: 22px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #e8eef4;
+    }
+
+    .result-heading {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .result-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      background: #eaf5fc;
+      color: #1267a5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
     }
 
     .result-header h2 {
       margin: 0;
-      color: #1261a0;
-      font-size: 22px;
+      color: #102f4c;
+      font-size: 21px;
     }
 
+    .result-header p {
+      margin: 4px 0 0;
+      color: #8796a6;
+      font-size: 12px;
+    }
+
+    .hbl-badge {
+      padding: 7px 11px;
+      border-radius: 7px;
+      background: #f1f5f8;
+      color: #526b80;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* =========================
+       STATUS
+    ========================= */
+
     .status-box {
-      padding: 18px;
-      border-radius: 15px;
-      background: linear-gradient(135deg, #e4f7ff, #edf5ff);
-      border: 1px solid #ccecff;
-      text-align: center;
-      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+      padding: 22px;
+      margin-bottom: 24px;
+      border-radius: 13px;
+      background: linear-gradient(
+        135deg,
+        #f1f8fc,
+        #e8f3fa
+      );
+      border: 1px solid #d7e8f3;
+    }
+
+    .status-box::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 1px solid rgba(18,103,165,0.08);
+      border-radius: 50%;
+      right: -35px;
+      top: -45px;
     }
 
     .status-label {
       display: block;
-      font-size: 13px;
-      color: #6b8298;
-      margin-bottom: 6px;
+      color: #71869a;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 8px;
     }
 
     .status-value {
+      position: relative;
+      z-index: 2;
+      color: #0b5f95;
       font-size: 21px;
-      font-weight: bold;
-      color: #0878bd;
+      font-weight: 700;
+    }
+
+    /* =========================
+       INFORMATION
+    ========================= */
+
+    .info-section-title {
+      margin-bottom: 4px;
+      color: #173c5d;
+      font-size: 14px;
+      font-weight: 700;
     }
 
     .info-row {
       display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 15px;
-      padding: 13px 0;
-      border-bottom: 1px solid #edf2f7;
+      grid-template-columns: 190px 1fr;
+      gap: 18px;
+      padding: 14px 0;
+      border-bottom: 1px solid #edf1f5;
     }
 
     .info-row:last-child {
@@ -211,38 +393,76 @@
     }
 
     .info-label {
-      font-weight: bold;
-      color: #5d7489;
+      color: #708296;
+      font-size: 14px;
+      font-weight: 600;
     }
 
     .info-value {
-      color: #172b3f;
+      color: #1c344b;
+      font-size: 14px;
       word-break: break-word;
     }
 
-    .footer {
-      text-align: center;
-      padding: 22px 15px;
-      color: #8aa0b5;
-      font-size: 13px;
+    .info-value.hbl-value {
+      color: #0b5f95;
+      font-weight: 700;
     }
 
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      text-align: center;
+      padding: 24px 15px;
+      color: #8393a3;
+      font-size: 12px;
+      border-top: 1px solid #dce5ed;
+      background: #f5f8fa;
+    }
+
+    .footer strong {
+      color: #526b80;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
     @media (max-width: 600px) {
+
       .header {
-        padding: 25px 15px 65px;
+        padding: 28px 15px 95px;
       }
 
-      .header h1 {
-        font-size: 28px;
+      .logo {
+        width: 62px;
+        height: 62px;
+        font-size: 21px;
+      }
+
+      .brand h1 {
+        font-size: 27px;
+      }
+
+      .brand p {
+        font-size: 14px;
       }
 
       .container {
-        padding: 0 13px 25px;
+        margin-top: -48px;
+        padding: 0 12px 30px;
       }
 
       .search-card,
       .result-card {
-        padding: 22px 18px;
+        padding: 23px 18px;
+        border-radius: 15px;
+      }
+
+      .search-title h2 {
+        font-size: 21px;
       }
 
       .search-box {
@@ -253,9 +473,26 @@
         width: 100%;
       }
 
+      .result-header {
+        align-items: flex-start;
+      }
+
+      .hbl-badge {
+        display: none;
+      }
+
       .info-row {
         grid-template-columns: 1fr;
         gap: 5px;
+        padding: 13px 0;
+      }
+
+      .info-label {
+        font-size: 13px;
+      }
+
+      .info-value {
+        font-size: 14px;
       }
     }
   </style>
@@ -265,60 +502,130 @@
 
   <div class="page">
 
+    <!-- HEADER -->
     <header class="header">
-      <div class="logo">LF</div>
 
-      <h1>Tracking LF</h1>
+      <div class="brand">
 
-      <p>ตรวจสอบสถานะการขนส่ง</p>
+        <div class="logo">
+          SC
+        </div>
+
+        <h1>Sino Carco Tracking</h1>
+
+        <p>
+          ระบบตรวจสอบสถานะการขนส่ง
+        </p>
+
+        <div class="brand-line"></div>
+
+      </div>
+
     </header>
 
 
+    <!-- MAIN -->
     <main class="container">
 
-      <!-- Search -->
+      <!-- SEARCH -->
       <section class="search-card">
 
-        <div class="search-title">
-          <h2>ตรวจสอบสถานะของคุณ</h2>
-          <p>กรุณากรอก HBL no. เพื่อค้นหาข้อมูล</p>
+        <div class="section-label">
+          Shipment Tracking
         </div>
+
+        <div class="search-title">
+
+          <h2>
+            ตรวจสอบสถานะสินค้า
+          </h2>
+
+          <p>
+            กรุณากรอก HBL No. เพื่อค้นหาข้อมูลการขนส่งของคุณ
+          </p>
+
+        </div>
+
 
         <div class="search-box">
 
-          <input
-            type="text"
-            id="hblInput"
-            placeholder="กรอก HBL no."
-            autocomplete="off"
-            spellcheck="false"
-          >
+          <div class="input-wrapper">
+
+            <span class="input-icon">
+              HBL
+            </span>
+
+            <input
+              type="text"
+              id="hblInput"
+              placeholder="กรอก HBL No."
+              autocomplete="off"
+              spellcheck="false"
+            >
+
+          </div>
+
 
           <button
             id="searchButton"
             onclick="searchHBL()"
           >
-            ตรวจสอบ
+            ตรวจสอบสถานะ
           </button>
 
         </div>
+
+
+        <div class="search-note">
+          ข้อมูลจะแสดงเฉพาะรายการที่ตรงกับ HBL No. ที่ค้นหา
+        </div>
+
 
         <div id="message"></div>
 
       </section>
 
 
-      <!-- Result -->
+      <!-- RESULT -->
       <section
         class="result-card"
         id="resultCard"
       >
 
         <div class="result-header">
-          <h2>ผลการตรวจสอบ</h2>
+
+          <div class="result-heading">
+
+            <div class="result-icon">
+              SC
+            </div>
+
+            <div>
+
+              <h2>
+                Shipment Information
+              </h2>
+
+              <p>
+                รายละเอียดการขนส่ง
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="hbl-badge"
+            id="hblBadge"
+          >
+            HBL
+          </div>
+
         </div>
 
 
+        <!-- STATUS -->
         <div class="status-box">
 
           <span class="status-label">
@@ -335,63 +642,168 @@
         </div>
 
 
-        <div class="info-row">
-          <div class="info-label">HBL no.</div>
-          <div class="info-value" id="hbl">-</div>
+        <div class="info-section-title">
+          ข้อมูล Shipment
         </div>
 
 
         <div class="info-row">
-          <div class="info-label">ชื่อลูกค้า</div>
-          <div class="info-value" id="customer">-</div>
+
+          <div class="info-label">
+            HBL No.
+          </div>
+
+          <div
+            class="info-value hbl-value"
+            id="hbl"
+          >
+            -
+          </div>
+
         </div>
 
 
         <div class="info-row">
-          <div class="info-label">สถานที่โหลดสินค้า</div>
-          <div class="info-value" id="location">-</div>
+
+          <div class="info-label">
+            ชื่อลูกค้า
+          </div>
+
+          <div
+            class="info-value"
+            id="customer"
+          >
+            -
+          </div>
+
         </div>
 
 
         <div class="info-row">
-          <div class="info-label">วันที่เข้า</div>
-          <div class="info-value" id="dateIn">-</div>
+
+          <div class="info-label">
+            สถานที่โหลดสินค้า
+          </div>
+
+          <div
+            class="info-value"
+            id="location"
+          >
+            -
+          </div>
+
         </div>
 
 
         <div class="info-row">
-          <div class="info-label">เวลารถเข้า</div>
-          <div class="info-value" id="timeIn">-</div>
+
+          <div class="info-label">
+            วันที่เข้า
+          </div>
+
+          <div
+            class="info-value"
+            id="dateIn"
+          >
+            -
+          </div>
+
         </div>
 
 
         <div class="info-row">
-          <div class="info-label">เวลารถออก</div>
-          <div class="info-value" id="timeOut">-</div>
+
+          <div class="info-label">
+            เวลารถเข้า
+          </div>
+
+          <div
+            class="info-value"
+            id="timeIn"
+          >
+            -
+          </div>
+
         </div>
 
 
         <div class="info-row">
-          <div class="info-label">ลักษณะงาน</div>
-          <div class="info-value" id="jobType">-</div>
+
+          <div class="info-label">
+            เวลารถออก
+          </div>
+
+          <div
+            class="info-value"
+            id="timeOut"
+          >
+            -
+          </div>
+
         </div>
 
 
         <div class="info-row">
-          <div class="info-label">ทะเบียนรถ</div>
-          <div class="info-value" id="truck">-</div>
+
+          <div class="info-label">
+            ลักษณะงาน
+          </div>
+
+          <div
+            class="info-value"
+            id="jobType"
+          >
+            -
+          </div>
+
         </div>
 
 
         <div class="info-row">
-          <div class="info-label">จำนวนสินค้า</div>
-          <div class="info-value" id="qty">-</div>
+
+          <div class="info-label">
+            ทะเบียนรถ
+          </div>
+
+          <div
+            class="info-value"
+            id="truck"
+          >
+            -
+          </div>
+
         </div>
 
 
         <div class="info-row">
-          <div class="info-label">หมายเหตุ</div>
-          <div class="info-value" id="remark">-</div>
+
+          <div class="info-label">
+            จำนวนสินค้า
+          </div>
+
+          <div
+            class="info-value"
+            id="qty"
+          >
+            -
+          </div>
+
+        </div>
+
+
+        <div class="info-row">
+
+          <div class="info-label">
+            หมายเหตุ
+          </div>
+
+          <div
+            class="info-value"
+            id="remark"
+          >
+            -
+          </div>
+
         </div>
 
       </section>
@@ -399,8 +811,13 @@
     </main>
 
 
+    <!-- FOOTER -->
     <footer class="footer">
-      Tracking LF • ระบบตรวจสอบสถานะการขนส่ง
+
+      <strong>Sino Carco Tracking</strong>
+      &nbsp;•&nbsp;
+      ระบบตรวจสอบสถานะการขนส่ง
+
     </footer>
 
   </div>
@@ -408,17 +825,33 @@
 
   <script>
 
+    /* =========================
+       GOOGLE APPS SCRIPT API
+       ใช้ URL เดิม
+    ========================= */
+
     const API_URL =
       "https://script.google.com/macros/s/AKfycbxhVFDQm85n8wS14oSNeJYKuT8gERdPTc-KTOwhA1Jubnh0kDTUyZmMySe8NK1YMVxI4Q/exec";
 
 
+    /* =========================
+       SET TEXT
+    ========================= */
+
     function setText(id, value) {
 
-      document.getElementById(id).textContent =
+      const element =
+        document.getElementById(id);
+
+      element.textContent =
         value || "-";
 
     }
 
+
+    /* =========================
+       SEARCH HBL
+    ========================= */
 
     function searchHBL() {
 
@@ -434,12 +867,16 @@
       const resultCard =
         document.getElementById("resultCard");
 
+      const hblBadge =
+        document.getElementById("hblBadge");
+
 
       const hbl =
         input.value.trim();
 
 
-      // ซ่อนผลเดิมทุกครั้งก่อนค้นหา
+      /* ซ่อนผลเก่าทุกครั้ง */
+
       resultCard.style.display = "none";
 
       message.className = "";
@@ -447,27 +884,37 @@
       message.textContent = "";
 
 
-      // ไม่กรอก HBL
+      /* ตรวจสอบช่องว่าง */
+
       if (!hbl) {
 
         message.className = "error";
 
         message.textContent =
-          "กรุณากรอก HBL no.";
+          "กรุณากรอก HBL No.";
+
+        input.focus();
 
         return;
+
       }
 
 
+      /* Loading */
+
       button.disabled = true;
 
-      button.textContent = "กำลังตรวจสอบ...";
+      button.textContent =
+        "กำลังตรวจสอบ...";
 
-      message.className = "loading";
+      message.className =
+        "loading";
 
       message.textContent =
-        "กำลังค้นหาข้อมูล...";
+        "กำลังค้นหาข้อมูลการขนส่ง...";
 
+
+      /* เรียก Google Apps Script */
 
       fetch(
         API_URL +
@@ -478,80 +925,105 @@
       .then(response => {
 
         if (!response.ok) {
-          throw new Error("Network error");
+
+          throw new Error(
+            "Network error"
+          );
+
         }
 
         return response.json();
 
       })
 
+
       .then(result => {
+
+        /* ไม่พบข้อมูล */
 
         if (!result.success) {
 
-          message.className = "error";
+          message.className =
+            "error";
 
           message.textContent =
-            result.message || "ไม่พบข้อมูล";
+            result.message ||
+            "ไม่พบข้อมูลสำหรับ HBL No. นี้";
 
           return;
+
         }
 
 
-        const data = result.data;
+        /* ข้อมูลที่พบ */
+
+        const data =
+          result.data;
 
 
-        // แสดงเฉพาะข้อมูลของ HBL ที่ผู้ใช้ค้นหา
+        /* แสดงเฉพาะ HBL ที่ค้นหา */
+
         setText(
           "hbl",
           data["HBL no."]
         );
+
 
         setText(
           "customer",
           data["ชื่อลูกค้า"]
         );
 
+
         setText(
           "location",
           data["สถานที่โหลดสินค้า"]
         );
+
 
         setText(
           "dateIn",
           data["วันที่เข้า"]
         );
 
+
         setText(
           "timeIn",
           data["เวลารถเข้า"]
         );
+
 
         setText(
           "timeOut",
           data["เวลารถออก"]
         );
 
+
         setText(
           "jobType",
           data["ลักษณะงาน"]
         );
+
 
         setText(
           "truck",
           data["ทะเบียนรถ"]
         );
 
+
         setText(
           "qty",
           data["QTY"]
         );
+
 
         setText(
           "remark",
           data["REMARK"]
         );
 
+
+        /* สถานะ */
 
         setText(
           "statusBox",
@@ -560,13 +1032,22 @@
         );
 
 
+        /* HBL Badge */
+
+        hblBadge.textContent =
+          data["HBL no."] || hbl;
+
+
+        /* แสดงผล */
+
         resultCard.style.display =
           "block";
 
         message.textContent = "";
 
 
-        // เลื่อนมาดูผลการค้นหา
+        /* เลื่อนไปยังผลลัพธ์ */
+
         resultCard.scrollIntoView({
           behavior: "smooth",
           block: "start"
@@ -574,30 +1055,36 @@
 
       })
 
+
       .catch(error => {
 
         console.error(error);
 
-        message.className = "error";
+        message.className =
+          "error";
 
         message.textContent =
           "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง";
 
       })
 
+
       .finally(() => {
 
         button.disabled = false;
 
         button.textContent =
-          "ตรวจสอบ";
+          "ตรวจสอบสถานะ";
 
       });
 
     }
 
 
-    // กด Enter เพื่อค้นหา
+    /* =========================
+       ENTER TO SEARCH
+    ========================= */
+
     document
       .getElementById("hblInput")
       .addEventListener(
@@ -605,7 +1092,9 @@
         function(event) {
 
           if (event.key === "Enter") {
+
             searchHBL();
+
           }
 
         }
