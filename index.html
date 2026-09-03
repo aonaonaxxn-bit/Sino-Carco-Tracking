@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tracking LF - HBL Tracking</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, "Noto Sans Thai", sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+      color: #123b63;
+    }
+
+    .header p {
+      margin: 0;
+      color: #6b7280;
+      font-size: 16px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+      margin-bottom: 20px;
+    }
+
+    .search-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 14px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .search-box input:focus {
+      border-color: #2563eb;
+    }
+
+    .search-box button {
+      padding: 14px 24px;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .search-box button:hover {
+      background: #1d4ed8;
+    }
+
+    .search-box button:disabled {
+      background: #9ca3af;
+      cursor: wait;
+    }
+
+    #message {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .error {
+      color: #dc2626;
+    }
+
+    .loading {
+      color: #2563eb;
+    }
+
+    .result {
+      display: none;
+    }
+
+    .result h2 {
+      margin-top: 0;
+      color: #123b63;
+      font-size: 22px;
+    }
+
+    .status {
+      padding: 15px;
+      border-radius: 10px;
+      background: #eef6ff;
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 13px 0;
+      gap: 15px;
+    }
+
+    .info-label {
+      font-weight: bold;
+      color: #4b5563;
+    }
+
+    .info-value {
+      color: #111827;
+      word-break: break-word;
+    }
+
+    .footer {
+      text-align: center;
+      color: #9ca3af;
+      font-size: 13px;
+      margin-top: 25px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 25px 15px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .header h1 {
+        font-size: 26px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .search-box button {
+        width: 100%;
+      }
+
+      .info-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <h1>Tracking LF</h1>
+      <p>ตรวจสอบสถานะการขนส่งด้วย HBL no.</p>
+    </div>
+
+    <div class="card">
+
+      <div class="search-title">
+        🔎 ค้นหาข้อมูลการขนส่ง
+      </div>
+
+      <div class="search-box">
+        <input
+          type="text"
+          id="hblInput"
+          placeholder="กรอก HBL no. เช่น LCHO2608003A"
+          autocomplete="off"
+        >
+
+        <button id="searchButton" onclick="searchHBL()">
+          ค้นหา
+        </button>
+      </div>
+
+      <div id="message"></div>
+
+    </div>
+
+
+    <div class="card result" id="resultCard">
+
+      <h2>📦 ข้อมูลการขนส่ง</h2>
+
+      <div class="status" id="statusBox">
+        สถานะ
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">HBL no.</div>
+        <div class="info-value" id="hbl"></div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">ชื่อลูกค้า</div>
+        <div class="info-value" id="customer"></div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">สถานที่โหลดสินค้า</div>
+        <div class="info-value" id="location"></div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">วันที่เข้า</div>
+        <div class="info-value" id="dateIn"></div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">เวลารถเข้า</div>
+        <div class="info-value" id="timeIn"></div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">เวลารถออก</div>
+        <div class="info-value" id="timeOut"></div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">ลักษณะงาน</div>
+        <div class="info-value" id="jobType"></div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">ทะเบียนรถ</div>
+        <div class="info-value" id="truck"></div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">จำนวนสินค้า</div>
+        <div class="info-value" id="qty"></div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">หมายเหตุ</div>
+        <div class="info-value" id="remark"></div>
+      </div>
+
+    </div>
+
+
+    <div class="footer">
+      Tracking LF • ข้อมูลอัปเดตจากระบบ Google Sheets
+    </div>
+
+  </div>
+
+
+  <script>
+
+    // Google Apps Script Web App
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbxhVFDQm85n8wS14oSNeJYKuT8gERdPTc-KTOwhA1Jubnh0kDTUyZmMySe8NK1YMVxI4Q/exec";
+
+
+    function searchHBL() {
+
+      const input = document.getElementById("hblInput");
+      const button = document.getElementById("searchButton");
+      const message = document.getElementById("message");
+      const resultCard = document.getElementById("resultCard");
+
+      const hbl = input.value.trim();
+
+      resultCard.style.display = "none";
+      message.className = "";
+      message.innerHTML = "";
+
+      if (!hbl) {
+        message.className = "error";
+        message.innerHTML = "กรุณากรอก HBL no.";
+        return;
+      }
+
+      button.disabled = true;
+      button.innerText = "กำลังค้นหา...";
+      message.className = "loading";
+      message.innerHTML = "กำลังค้นหาข้อมูล...";
+
+      fetch(API_URL + "?hbl=" + encodeURIComponent(hbl))
+        .then(response => response.json())
+        .then(result => {
+
+          if (!result.success) {
+
+            message.className = "error";
+            message.innerHTML =
+              result.message || "ไม่พบข้อมูล";
+
+            return;
+          }
+
+          const data = result.data;
+
+          document.getElementById("hbl").innerText =
+            data["HBL no."] || "-";
+
+          document.getElementById("customer").innerText =
+            data["ชื่อลูกค้า"] || "-";
+
+          document.getElementById("location").innerText =
+            data["สถานที่โหลดสินค้า"] || "-";
+
+          document.getElementById("dateIn").innerText =
+            data["วันที่เข้า"] || "-";
+
+          document.getElementById("timeIn").innerText =
+            data["เวลารถเข้า"] || "-";
+
+          document.getElementById("timeOut").innerText =
+            data["เวลารถออก"] || "-";
+
+          document.getElementById("jobType").innerText =
+            data["ลักษณะงาน"] || "-";
+
+          document.getElementById("truck").innerText =
+            data["ทะเบียนรถ"] || "-";
+
+          document.getElementById("qty").innerText =
+            data["QTY"] || "-";
+
+          document.getElementById("remark").innerText =
+            data["REMARK"] || "-";
+
+          document.getElementById("statusBox").innerText =
+            data["Result"] || "อยู่ระหว่างดำเนินการ";
+
+          resultCard.style.display = "block";
+
+          message.innerHTML = "";
+
+        })
+        .catch(error => {
+
+          console.error(error);
+
+          message.className = "error";
+          message.innerHTML =
+            "เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง";
+
+        })
+        .finally(() => {
+
+          button.disabled = false;
+          button.innerText = "ค้นหา";
+
+        });
+    }
+
+
+    // กด Enter เพื่อค้นหา
+    document.getElementById("hblInput").addEventListener(
+      "keydown",
+      function(event) {
+
+        if (event.key === "Enter") {
+          searchHBL();
+        }
+
+      }
+    );
+
+  </script>
+
+</body>
+</html>
